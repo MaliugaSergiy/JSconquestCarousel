@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <div class="container">
+        <form class="feedback" action="">
+            <div class="feedback-row">
+              <div class="input js-input">
+                <label class="input-label">
+                  <input type="text" class="input-field" required />
+                  <div class="input-placeholder">ФИО</div>
+                </label>
+              </div>
+            </div>
+            <div class="feedback-row">
+              <div class="input js-input">
+                <label class="input-label">
+                  <input
+                    class="input-field js-phone-input"
+                    type="text"
+                    required
+                  />
+                  <div class="input-placeholder">Телефон</div>
+                </label>
+              </div>
+            </div>
+            <div class="feedback-row">
+              <div class="input js-input">
+                <label class="input-label">
+                  <input type="text" class="input-field" required />
+                  <div class="input-placeholder">E-mail</div>
+                </label>
+              </div>
+            </div>
+            <div class="feedback-row">
+              <div class="feedback-submit">
+                <div class="feedback-submitDesktop">
+                  <button
+                    class="button button--type-primary"
+                    type="submit"
+                  >
+                    <div class="button-title">Отправить</div>
+                  </button>
+                </div>
+                <div class="feedback-submitMobile">
+                  <button
+                    class="button button--type-primary button--size-small"
+                    type="submit"
+                  >
+                    <div class="button-title">Отправить</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+<script src="./scripts/input.js"></script>
+<!-- <script src="./scripts/main.js"></script> -->
+</body>
+</html>

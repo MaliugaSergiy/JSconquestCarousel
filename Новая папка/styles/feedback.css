@@ -1,0 +1,27 @@
+.feedback {}
+
+.feedback-row {
+  margin-bottom: 48px;
+}
+
+.feedback-submit {
+  /* text-align: center; */
+}
+
+.feedback-submitDesktop {}
+
+@media (max-width: 840px) {
+  .feedback-submitDesktop {
+    display: none;
+  }
+}
+
+.feedback-submitMobile {
+  display: none;
+}
+
+@media (max-width: 840px) {
+  .feedback-submitMobile {
+    display: block;
+  }
+}

@@ -1,0 +1,80 @@
+.textarea {
+  position: relative;
+  transition: 0.2s ease-out;
+}
+
+.textarea::before {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #fdcd54;
+  bottom: 0;
+  transform: rotateY(90deg);
+  transition: 0.4s ease-out;
+  opacity: 0;
+}
+
+.textarea--isFocused::before {
+  transform: rotateY(0);
+  opacity: 1;
+}
+
+.textarea-label {
+}
+
+.textarea-field {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  outline: none;
+  resize: none;
+  vertical-align: top;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #313237;
+  font-family: inherit;
+  line-height: 1.2;
+  font-size: 16px;
+  overflow: hidden;
+  height: 30px;
+  transition: 0.2s ease-out;
+  /* padding: 8px 0; */
+}
+
+.textarea-placeholder {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  transform: translate(0, -50%);
+  transition: 0.3s ease-out;
+  cursor: text;
+}
+
+.textarea--isFilled .textarea-placeholder {
+  transform: translate(calc(-100% - 36px), -50%);
+  font-weight: 700;
+  cursor: default;
+}
+
+@media (max-width: 840px) {
+  .textarea--isFilled .textarea-placeholder {
+    transform: translate(0, -38px);
+    font-size: 14px;
+  }
+}
+
+.textarea-error {
+}
+
+.textarea-error {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  color: red;
+  font-size: 14px;
+}

@@ -1,0 +1,6 @@
+@import "./container.css";
+@import "./carousel.css";
+
+* {
+    box-sizing: border-box;
+}
