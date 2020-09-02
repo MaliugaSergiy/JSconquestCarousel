@@ -1,33 +1,27 @@
-import KeyboardNavigation from "./KeyboardNavigation";
-import SliderNavigation from "./SliderNavigation";
-import SliderCounter from "./counter";
+const ACTIVE_CLASS = "active";
 
 export default class BasicCarousel {
     constructor({element, ...props}) {
         this.props = {...props };
-        this.ACTIVE_CLASS = "active";
+
         this.holderElement = element;
-        
         
         if(!this.holderElement) {
             console.warn("you should add element");
             return;
         }
 
-        //
+        // this.slides = this.holderElement.querySelectorAll("img");
         this.slides = Array.from(this.holderElement.querySelectorAll("img"));
+        this.manageInitActiveClass();
+    }
+
+    manageInitActiveClass() {
         this.activeIndex = this.initialActiveIndex;
-        this.#initialResetActiveClasses();
-        this.#initialSetActiveClass();
-
-        this.#initOptions();
+        this._resetInitialActiveClasses();
+        this._initialSetActiveClass();
     }
 
-    #initOptions() {
-        new SliderNavigation(this);
-        new KeyboardNavigation(this);
-        new SliderCounter(this);
-    }
 
     get isFirst(){
         return this.activeIndex === 0;
@@ -52,7 +46,7 @@ export default class BasicCarousel {
     }
 
     get initialActiveIndex () {
-        const _activeIndex = this.slides.findIndex(item => item.classList.contains(this.ACTIVE_CLASS));
+        const _activeIndex = this.slides.findIndex(item => item.classList.contains(ACTIVE_CLASS));
         if(_activeIndex === -1) {
             return 0
         }
@@ -63,11 +57,11 @@ export default class BasicCarousel {
         return this.slides[this.activeIndex];
     }
 
-    #initialResetActiveClasses() {
-        this.slides.forEach(slide => slide.classList.remove(this.ACTIVE_CLASS))
+    _resetInitialActiveClasses() {
+        this.slides.forEach(slide => slide.classList.remove(ACTIVE_CLASS))
     }
 
-    #initialSetActiveClass(){
+    _initialSetActiveClass(){
         this.setActiveSlideByIndex(this.activeIndex)
     }
 
@@ -79,24 +73,24 @@ export default class BasicCarousel {
             console.warn(`There isn't slide with index ${index}. ${chaiceMessage}.`);
             return;
         };
-        if(index === this.activeIndex) {
-            console.warn(`Current index ${this.activeIndex}. ${chaiceMessage} except ${this.activeIndex}`)
-        }
 
-        this.#resetPrevActive();
-        slide.classList.add(this.ACTIVE_CLASS);
+        this._resetPrevActive();
+        slide.classList.add(ACTIVE_CLASS);
         this.activeIndex = index;
-
+        return {
+            index: this.activeIndex,
+            element: slide
+        }
     }
 
-    #resetPrevActive() {
-        this.activeSlide.classList.remove(this.ACTIVE_CLASS);
+    _resetPrevActive() {
+        this.activeSlide.classList.remove(ACTIVE_CLASS);
     }
 
     setNextActive=()=>{
-        this.setActiveSlideByIndex(this.nextIndex);
+        return this.setActiveSlideByIndex(this.nextIndex);
     }
     setPrevActive=()=>{
-        this.setActiveSlideByIndex(this.prevIndex);  
+        return this.setActiveSlideByIndex(this.prevIndex);  
     }
 }
