@@ -5,7 +5,12 @@ const carouselOptions = {
     autoplay: true
 }
 
-const carousel = new JSconquestCarousel({selector:".carousel", loop: true, ...carouselOptions});
+const carousel = new JSconquestCarousel(
+    {
+        selector:".carousel", 
+        loop: false, 
+        ...carouselOptions}
+        );
 console.log("carousel", carousel)
 window.carousel = carousel;
 

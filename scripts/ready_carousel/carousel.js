@@ -4,7 +4,9 @@ import SliderCounter from "./counter";
 
 export default class JSconquestCarousel {
     constructor({selector, ...props}) {
+        this.props = {...props };
         this.ACTIVE_CLASS = "active";
+        this.isLoop = this.props.loop
         
         this.customeEvents = {};
         this.#createCustomeEvents();
@@ -14,7 +16,6 @@ export default class JSconquestCarousel {
         // this.navigationCounter = null;
 
         this.holderElement = document.querySelector(selector);
-        this.props = {...props };
         
         
         if(!this.holderElement) {

@@ -3,6 +3,7 @@ const ACTIVE_CLASS = "active";
 export default class BasicCarousel {
     constructor({element, ...props}) {
         this.props = {...props };
+        this.isLoop = this.props.loop
 
         this.holderElement = element;
         
@@ -39,10 +40,10 @@ export default class BasicCarousel {
     }
 
     get nextIndex() {
-        return this.isLast && this.props.loop ? 0 : this.activeIndex + 1;
+        return this.isLast && this.isLoop ? 0 : this.activeIndex + 1;
     }
     get prevIndex() {
-        return this.isFirst && this.props.loop ? this.lastIndex : this.activeIndex - 1;
+        return this.isFirst && this.isLoop ? this.lastIndex : this.activeIndex - 1;
     }
 
     get initialActiveIndex () {
